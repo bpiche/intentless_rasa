@@ -6,7 +6,7 @@ So all I did here was configure rasa to use a fallback intent, and that fallback
 
 This simple baseline is just using spacy's nlp object to embed FAQs as well as user input. I think this is down to spacy's limitations, but this design choice means that we currently have to store everything in memory. Perhaps if I used FAISS it would be possible to store this stuff on the disk, more persistently.
 
-[0] https://rasa.com/blog/breaking-free-from-intents-a-new-dialogue-model/
+[0] https://rasa.com/blog/breaking-free-from-intents-a-new-dialogue-model/ <br>
 [1] https://rasa.com/docs/rasa/next/llms/llm-intentless/
 
 ### Training the rasa model
@@ -25,9 +25,9 @@ $> cd ../../
 
 ### Mental Health FAQ data
 
-There's a csv with 98 mental health FAQs in it, in the `util/ai/data/` subdirectory [1]. If you open it, you'll notice that it has 'Question' and 'Answer' columns. You can add more csvs to this directory, and if they contain 'Question' and 'Answer' columns, they will get included and added to the vectorized collection of FAQs when you run `docker-compose`.
+There's a csv with 98 mental health FAQs in it, in the `util/ai/data/` subdirectory [2]. If you open it, you'll notice that it has 'Question' and 'Answer' columns. You can add more csvs to this directory, and if they contain 'Question' and 'Answer' columns, they will get included and added to the vectorized collection of FAQs when you run `docker-compose`.
 
-[1] https://www.kaggle.com/discussions/general/188285
+[2] https://www.kaggle.com/discussions/general/188285
 
 ### Building the docker containers
 
