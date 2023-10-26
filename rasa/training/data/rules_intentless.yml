@@ -1,0 +1,19 @@
+version: "3.1"
+
+rules:
+- rule: Intentless FAQ question answering
+  steps:
+  - intent: nlu_fallback
+  - action: call_intentless
+
+- rule: Basic chitchat without a retrieval intent
+  steps:
+  - intent: greet
+  # - action: call_intentless
+  - action: utter_greet
+
+- rule: Saying goodbye to the bot
+  steps:
+  - intent: goodbye
+  # - action: call_intentless
+  - action: utter_goodbye

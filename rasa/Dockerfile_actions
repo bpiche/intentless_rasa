@@ -1,0 +1,18 @@
+FROM rasa/rasa:3.6.13
+
+WORKDIR /app/
+
+COPY requirements_actions.txt /app/requirements.txt
+
+COPY training/ /app/
+
+USER root
+
+RUN apt-get update && apt-get install build-essential -y \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install -r requirements.txt
+
+CMD ["run", "actions"]
+
+USER 1001

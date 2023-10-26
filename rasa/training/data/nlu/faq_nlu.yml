@@ -1,0 +1,29 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hi
+    - hey
+    - hello
+    - hey there
+    - hello there
+    - good morning
+    - good evening
+    - good afternoon
+    - Hey, how's it going?
+    - It's nice to meet you
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - bye bye
+    - see you
+    - Got to go
+    - good bye
+    - good night
+    - have a nice day
+    - see you around
+    - see you later
+    - I have to go now

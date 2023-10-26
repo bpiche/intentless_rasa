@@ -1,0 +1,82 @@
+# This compose file defines the external services needed to run the application.
+# You can use this during development and run the application with the usual
+# `dotnet run` CLI or via Visual Studio.
+#
+# ```
+# docker-compose up -d
+# ```
+#
+# Alternatively, you can build and run the application as well by adding the
+# "app" profile:
+#
+# ```
+# docker-compose --profile app up -d
+# ```
+version: "3.4"
+services:
+  gateway:
+    build: gateway/
+    depends_on:
+      rasa:
+        condition: service_started
+      util:
+        condition: service_started
+    networks:
+      - ai_network
+    image: ai-gateway:dev
+    ports:
+      - 5000:5000
+    environment:
+      - RASA_HOST=rasa
+      - RASA_PORT=5005
+      - AI_HOST=util
+      - AI_PORT=5006
+      - SEARCH_HOST=search
+      - SEARCH_PORT=5056
+      - SERVE_HTTPS=False
+    labels:
+      com.intentless.app: ai-gateway
+      com.intentless.type: api
+  util:
+    build: util/
+    image: ai-util:dev
+    networks:
+      - ai_network
+    ports:
+      - 5006:5006
+    labels:
+      com.intentless.app: ai-util
+      com.intentless.type: api
+  rasa:
+    build: rasa/
+    image: ai-rasa:dev
+    # depends_on:
+    #   rasa-train:
+    #     condition: service_completed_successfully
+    networks:
+      - ai_network
+    ports:
+      - 5005:5005
+    labels:
+      com.intentless.app: ai-rasa
+      com.intentless.type: api
+  actions:
+    build:
+      context: rasa/
+      dockerfile: Dockerfile_actions
+    image: ai-actions:dev
+    depends_on:
+      util:
+        condition: service_started
+    networks:
+      - ai_network
+    ports:
+      - 5055:5055
+    environment:
+      - AI_UTIL_HOST=util
+      - AI_UTIL_PORT=5006
+    labels:
+      com.intentless.app: ai-actions
+      com.intentless.type: api
+networks:
+  ai_network:

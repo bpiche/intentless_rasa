@@ -1,0 +1,4 @@
+rasa/training/.rasa
+rasa/training/models/*.tar.gz
+
+util/ai/__pycache__
