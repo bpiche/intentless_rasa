@@ -31,8 +31,6 @@ services:
       - RASA_PORT=5005
       - AI_HOST=util
       - AI_PORT=5006
-      - SEARCH_HOST=search
-      - SEARCH_PORT=5056
       - SERVE_HTTPS=False
     labels:
       com.intentless.app: ai-gateway
@@ -50,9 +48,6 @@ services:
   rasa:
     build: rasa/
     image: ai-rasa:dev
-    # depends_on:
-    #   rasa-train:
-    #     condition: service_completed_successfully
     networks:
       - ai_network
     ports:

@@ -18,11 +18,6 @@ ai_port = os.environ.get('AI_PORT')
 ai_scheme = os.environ.get('AI_SCHEME', 'http')
 ai_base_url = f'{ai_scheme}://{ai_host}:{ai_port}'
 
-search_host = os.environ.get('SEARCH_HOST')
-search_port = os.environ.get('SEARCH_PORT')
-search_scheme = os.environ.get('SEARCH_SCHEME', 'http')
-search_base_url = f'{search_scheme}://{search_host}:{search_port}'
-
 rasa_host = os.environ.get('RASA_HOST', '127.0.0.1')
 rasa_port = os.environ.get('RASA_PORT', '5005')
 rasa_scheme = os.environ.get('RASA_SCHEME', 'http')

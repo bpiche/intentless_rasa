@@ -16,7 +16,9 @@ $> cd ../../
 
 ### Mental Health FAQ data
 
-There's a csv with 98 mental health FAQs in it, in the `util/ai/data/` subdirectory. If you open it, you'll notice that it has 'Question' and 'Answer' columns. You can add more csvs to this directory, and if they contain 'Question' and 'Answer' columns, they will get included and added to the vectorized collection of FAQs when you run `docker-compose`.
+There's a csv with 98 mental health FAQs in it, in the `util/ai/data/` subdirectory [0]. If you open it, you'll notice that it has 'Question' and 'Answer' columns. You can add more csvs to this directory, and if they contain 'Question' and 'Answer' columns, they will get included and added to the vectorized collection of FAQs when you run `docker-compose`.
+
+[0] https://www.kaggle.com/
 
 ### Building the docker containers
 
